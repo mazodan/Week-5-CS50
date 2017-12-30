@@ -1,0 +1,36 @@
+0.  What is pneumonoultramicroscopicsilicovolcanoconiosis?
+        a lung disease caused by inhaling very fine ash and sand dust.
+
+1.  According to its man page, what does getrusage do?
+        Get resource usage of the program
+
+2.  Per that same man page, how many members are in a variable of type struct rusage?
+        16
+
+3.  Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+        According of the function prototype for getrusage, it requires a pointer to rusage.
+
+4.  Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us
+    that you indeed understand how that function’s for loop works.
+
+        Challenge Accepted.
+
+        First, Every character in that file is read, if it is a letter or an apostrophe, it is added into an array. If it hits a space,
+        the null terminator of the string is added and it is spellchecked, then the index is reset to zero for the new word.
+
+        If it exceeds the LIMIT, more than the possible longest word in the english language or encounters a number in the word.
+        The rest of the word is discarded until the next space.
+
+        The for loop will execute until the EOF has been read by fgetc, and the spellchecker will only execute for indexes that are more than zero
+
+        Also, Misspellings and Words will be incremented.
+
+5.  Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s"
+    to read whole words at a time? Put another way, what problems might arise by relying on fscanf alone?
+        When we use fscanf, we will also have to check every character to make sure that it is a valid word, therefore it would be more efficient
+        to just check every character since we are going to do that anyway when we have the returned value of fscanf
+
+        Also, we cannot discard words greater than 45 to be spellchecked
+
+6.  Why do you think we declared the parameters for check and load as const (which means "constant")?
+        It makes the parameters read only. The values of the parameter itself cannot be altered.
